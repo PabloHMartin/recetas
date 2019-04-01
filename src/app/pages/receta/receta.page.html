@@ -1,0 +1,18 @@
+<ion-header no-border>
+  <ion-toolbar class="transparent">
+    <ion-back-button slot="start" defaultHref="/" color="primary"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div *ngIf="receta$ | async as receta">
+    <ion-img src="{{receta.imgUrl}}"></ion-img>
+    <div padding class="title_container">
+      <ion-row class="ion-justify-content-between">
+        <div class="title">{{receta.title}}</div>
+        <div class="title">
+          <ion-icon class="icon" name="time"></ion-icon><span class="text">{{receta.tiempo}}</span>
+        </div>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

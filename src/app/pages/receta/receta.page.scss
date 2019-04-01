@@ -1,0 +1,25 @@
+.transparent {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+ion-header { position: absolute; }
+
+.title{
+    font-size: 1.6em;
+    font-weight: 300;
+}
+
+.icon {
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: 300;
+    vertical-align: middle;
+   }
+   .text{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .title_container{
+      background-color: #bb4d00;
+      color: white;
+  }

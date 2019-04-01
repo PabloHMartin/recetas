@@ -6,6 +6,7 @@ const routes: Routes = [
 
   { path: 'login', loadChildren: '../pages/login/login.module#LoginPageModule' },
   { path: 'info', loadChildren: '../pages/info/info.module#InfoPageModule' },
+  { path: 'receta', loadChildren: '../pages/receta/receta.module#RecetaPageModule' },
   {
     path: 'tabs',
     component: TabsPage,
