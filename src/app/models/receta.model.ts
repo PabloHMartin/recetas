@@ -6,4 +6,5 @@ export interface Receta {
     category: string;
     thumbnailUrl: string;
     ingredients: string[];
+    tiempo: string;
 }

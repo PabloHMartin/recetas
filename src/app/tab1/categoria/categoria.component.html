@@ -12,11 +12,20 @@
   <div>
     <div *ngIf="recetas$ | async as recetas">
       <div *ngFor="let receta of recetas">
-        {{receta.title}}
-        {{receta.id}}
-        {{receta.category}}
-        {{receta.description}}
-        {{receta.ingredients}}
+          <ion-card mode="ios">
+              <ion-header>
+                <ion-img src="{{receta.imgUrl}}" ></ion-img>
+              </ion-header>
+              <ion-card-content>
+                <ion-row>
+                  <div class="capitalize title">{{receta.title}}</div>
+                </ion-row>
+                <ion-row class="ion-justify-content-between">
+                    <div class="ingredients">{{receta.ingredients}}</div>
+                    <div><ion-icon name="time"></ion-icon>{{receta.tiempo}}</div>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
       </div>
     </div>
   </div>

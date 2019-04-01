@@ -5,3 +5,22 @@
  ion-label{
     font-size: 1.5em;
   }
+  ion-card{
+    ion-header{
+      color:white;
+      max-width: 100%;
+      overflow: hidden;
+      padding-bottom: 5px;
+      font-size: 0.8em;
+      ion-img{
+        max-height: 80px;
+      }
+    }
+    .title{
+      font-size: 1.3em;
+    }
+    .ingredients{
+      font-size: 1em;
+      font-weight: 300;
+    }
+  }
