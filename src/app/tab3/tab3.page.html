@@ -1,9 +1,57 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
+<ion-content>
+  <ion-toolbar padding>
+    <ion-label>Cuenta</ion-label>
   </ion-toolbar>
-</ion-header>
+  <ion-row class="ion-justify-content-center">
 
-<ion-content></ion-content>
+    <div *ngIf="auth.user$ | async as user; else login">
+      <ion-card mode="ios">
+        <ion-avatar>
+          <img src="{{user.photoURL}}" class="slide-image title" alt="">
+        </ion-avatar>
+        <ion-card-header padding>
+          <ion-card-title class="title ion-text-center">
+            Bienvenido {{user.displayName}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-center" margin>
+          Esperamos que disfrutes de nuestra App
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ng-template #login>
+      <ion-card mode="ios">
+        <ion-avatar>
+          <img src="../../assets/icon/cake.svg" class="slide-image title" alt="">
+        </ion-avatar>
+        <ion-card-header padding>
+          <ion-card-title class="ion-text-center">
+            Identifícate
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-center" margin>
+          Podrás acceder a funcionalidades exclusivas
+        </ion-card-content>
+      </ion-card>
+      <div class="ion-text-center">
+        <ion-button fill="outline" routerLink="/login">
+          <span>
+            Identifícate
+          </span>
+        </ion-button>
+      </div>
+    </ng-template>
+  </ion-row>
+  <ion-list>
+    <ion-item routerLink="/info" detail>
+      <ion-icon slot="start" color="medium" name="information-circle-outline"></ion-icon>
+      <ion-label>Información</ion-label>
+    </ion-item>
+    <ion-item *ngIf="auth.user$ | async as user" (click)="signOut()" detail>
+      <ion-icon color="warn" slot="start" color="primary" name="power"></ion-icon>
+      <ion-label>Cerrar sesión</ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

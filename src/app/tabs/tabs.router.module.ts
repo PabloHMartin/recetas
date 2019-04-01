@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
+
+  { path: 'login', loadChildren: '../pages/login/login.module#LoginPageModule' },
+  { path: 'info', loadChildren: '../pages/info/info.module#InfoPageModule' },
   {
     path: 'tabs',
     component: TabsPage,
@@ -33,11 +36,6 @@ const routes: Routes = [
             loadChildren: '../tab3/tab3.module#Tab3PageModule'
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
       }
     ]
   },
@@ -54,4 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
