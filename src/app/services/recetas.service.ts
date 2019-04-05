@@ -17,7 +17,7 @@ export class RecetasService {
 
 
   getRecetasByCategoria(categoria: string) {
-    this.recetas$ = this.afs.collection<Receta>('recetas', ref => ref.where('category', '==', categoria)).valueChanges();
+    this.recetas$ = this.afs.collection<Receta>('recetas', ref => ref.where('category', '==', categoria).orderBy('title')).valueChanges();
     return this.recetas$;
   }
 

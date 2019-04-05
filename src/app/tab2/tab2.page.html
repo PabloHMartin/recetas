@@ -2,18 +2,58 @@
   <ion-toolbar padding>
     <ion-label>Mis habituales</ion-label>
   </ion-toolbar>
-  <ion-row class="ion-justify-content-center" padding>
-    <ion-icon color="medium" src="../../assets/icon/stew-1.svg"></ion-icon>
-  </ion-row>
-  <ion-row class=" margin-btn ion-justify-content-center">
-    <div class="subtitle">
-      Aún no has añadido ninguna receta a tus habituales
-    </div>
-  </ion-row>
+
+
+
+  <ng-template #no_favs>
+    <ion-row class="ion-justify-content-center" padding>
+      <ion-icon color="medium" src="../../assets/icon/stew-1.svg"></ion-icon>
+    </ion-row>
+    <ion-row class=" margin-btn ion-justify-content-center">
+      <div class="subtitle">
+        Aún no has añadido ninguna receta a tus habituales
+      </div>
+    </ion-row>
+  </ng-template>
 
   <div *ngIf="auth.user$ | async as user; else login">
 
+
   </div>
+
+  <div *ngIf="favService.recetas as recetas; else no_favs">
+    <div *ngFor="let receta of recetas; let i = index">
+      <ion-card mode="ios" routerLink="/receta/{{receta.id}}">
+        <ion-header>
+          <ion-img src="{{receta.imgUrl}}"></ion-img>
+        </ion-header>
+        <ion-card-content>
+          <ion-row>
+            <div class="capitalize title">{{receta.title}}</div>
+          </ion-row>
+          <ion-row class="ion-justify-content-between">
+            <div class="ingredients">{{receta.ingredients}}</div>
+            <div>
+              <ion-icon name="time"></ion-icon>{{receta.tiempo}}
+            </div>
+          </ion-row>
+        </ion-card-content>
+        <div>
+
+          <ion-button (click)="favService.delete(receta.id)">
+            <ion-icon slot="icon-only" name="contact"></ion-icon>
+          </ion-button>
+
+
+        </div>
+      </ion-card>
+    </div>
+
+  </div>
+
+
+
+
 
   <ion-row class="ion-justify-content-center">
     <ng-template class="ion-justify-content-center" #login>

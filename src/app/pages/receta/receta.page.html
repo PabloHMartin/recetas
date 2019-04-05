@@ -4,6 +4,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="print()">
+      <ion-icon name="heart-empty"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div>
+  </div>
   <div *ngIf="receta$ | async as receta">
     <ion-img src="{{receta.imgUrl}}"></ion-img>
     <div padding class="title_container">
@@ -13,6 +20,16 @@
           <ion-icon class="icon" name="time"></ion-icon><span class="text">{{receta.tiempo}}</span>
         </div>
       </ion-row>
+    </div>
+    <div class="ingredients_container" padding>
+      <ion-chip *ngFor="let ingrediente of receta.ingredients">
+        <ion-label>{{ingrediente}}</ion-label>
+      </ion-chip>
+    </div>
+    <div class="description_container" padding>
+      <div class="description">
+        {{receta.description}}
+      </div>
     </div>
   </div>
 </ion-content>
