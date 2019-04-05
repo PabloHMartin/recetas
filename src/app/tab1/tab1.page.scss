@@ -7,6 +7,7 @@ ion-item{
   border-bottom: 1px solid lightgrey;
   height: 7vh;
 }
+
 ion-img{
   width: 70%;
 }
@@ -21,5 +22,34 @@ ion-label{
 }
 .categorias{
   font-weight: 500;
-  font-size: 1.8em;
+  font-size: 1.5em;
+}
+
+ion-avatar{
+  text-align: center;
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  position: relative;
+  top: -50px;
+      .slide-image {
+          width: 100px;
+      
+      }
+}
+ion-card {
+  padding-top: 2em;
+  overflow: unset !important;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+}
+ion-list{
+  margin-top: -40px;
+}
+ion-card-header {
+    position: relative;
+    top: -50px;
+    padding: 0px;
 }

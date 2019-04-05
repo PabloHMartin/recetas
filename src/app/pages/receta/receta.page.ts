@@ -25,10 +25,5 @@ export class RecetaPage implements OnInit {
 
   ngOnInit() {
   }
-  print() {
-    console.log(this.favService.userId);
-
-
-  }
 
 }

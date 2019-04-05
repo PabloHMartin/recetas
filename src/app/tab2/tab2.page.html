@@ -1,6 +1,6 @@
 <ion-content>
   <ion-toolbar padding>
-    <ion-label>Mis habituales</ion-label>
+    <ion-label color="primary/*">Mis habituales</ion-label>
   </ion-toolbar>
 
 
@@ -21,34 +21,34 @@
 
   </div>
 
-  <div *ngIf="favService.recetas as recetas; else no_favs">
-    <div *ngFor="let receta of recetas; let i = index">
-      <ion-card mode="ios" routerLink="/receta/{{receta.id}}">
-        <ion-header>
-          <ion-img src="{{receta.imgUrl}}"></ion-img>
-        </ion-header>
-        <ion-card-content>
-          <ion-row>
-            <div class="capitalize title">{{receta.title}}</div>
-          </ion-row>
-          <ion-row class="ion-justify-content-between">
-            <div class="ingredients">{{receta.ingredients}}</div>
-            <div>
-              <ion-icon name="time"></ion-icon>{{receta.tiempo}}
-            </div>
-          </ion-row>
-        </ion-card-content>
-        <div>
-
-          <ion-button (click)="favService.delete(receta.id)">
-            <ion-icon slot="icon-only" name="contact"></ion-icon>
-          </ion-button>
-
-
-        </div>
-      </ion-card>
+  <div *ngIf="favService.recetas.length > 0; else no_favs">
+    <div *ngIf="favService.recetas as recetas">
+      <div *ngFor="let receta of recetas">
+        <ion-card mode="ios" routerLink="/receta/{{receta.id}}">
+          <ion-header>
+            <ion-img src="{{receta.imgUrl}}"></ion-img>
+            <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+              <ion-fab-button (click)="favService.delete(receta.id)">
+                <ion-icon name="heart-dislike"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+          </ion-header>
+          <ion-card-content>
+            <ion-row>
+              <div class="capitalize title">{{receta.title}}</div>
+            </ion-row>
+            <ion-row class="ion-justify-content-between">
+              <div class="ingredients">{{receta.ingredients}}</div>
+              <div>
+                <ion-icon class="icon" name="time"></ion-icon><span class="text">{{receta.tiempo}}</span>
+              </div>
+            </ion-row>
+          </ion-card-content>
+          <div>
+          </div>
+        </ion-card>
+      </div>
     </div>
-
   </div>
 
 

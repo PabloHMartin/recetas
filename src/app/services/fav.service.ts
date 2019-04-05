@@ -77,6 +77,7 @@ export class FavService {
       .subscribe(
         arr => {
           let docId: string;
+          // docId = '_'; // firebase error if string is not initialized but if initialized firestore can't store recipe a second time
           arr.map(snap => docId = snap.payload.doc.id);
           this.afs.collection('user_receta').doc(docId).delete();
         }
@@ -84,6 +85,14 @@ export class FavService {
     console.log(snapshot);
 
   }
+
+  addFav(recetaId: string) {
+    this.afs.collection('user_receta').add({
+      recetaId: recetaId,
+      uid: this.userId
+    });
+  }
+
 
   deleteFavs() {
     this.recetas = [];

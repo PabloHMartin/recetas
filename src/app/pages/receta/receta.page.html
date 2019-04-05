@@ -3,15 +3,15 @@
     <ion-back-button slot="start" defaultHref="/" color="primary"></ion-back-button>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
+<ion-content fullscreen *ngIf="receta$ | async as receta">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="print()">
+    <ion-fab-button (click)="favService.addFav(receta.id)">
       <ion-icon name="heart-empty"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <div>
   </div>
-  <div *ngIf="receta$ | async as receta">
+  <div>
     <ion-img src="{{receta.imgUrl}}"></ion-img>
     <div padding class="title_container">
       <ion-row class="ion-justify-content-between">

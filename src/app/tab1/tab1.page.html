@@ -13,33 +13,40 @@
       </ion-card-content>
     </ion-card>
  -->
-  <ion-list lines="none">
-    <ion-list-header>
-      <ion-label class="categorias">Categorías</ion-label>
-    </ion-list-header>
-    <ion-item routerLink="/tabs/tab1/arroces" detail>
-      <ion-icon slot="start" color="medium" src="../../assets/icon/rice.svg"></ion-icon>
-      <ion-label>Arroces</ion-label>
-    </ion-item>
-    <ion-item routerLink="/tabs/tab1/legumbres" detail>
-      <ion-icon slot="start" color="medium" src="../../assets/icon/beans.svg"></ion-icon>
-      <ion-label>Legumbres</ion-label>
-    </ion-item>
-    <ion-item routerLink="/tabs/tab1/carnes" detail>
-      <ion-icon slot="start" color="medium" src="../../assets/icon/meat-1.svg"></ion-icon>
-      <ion-label>Carnes</ion-label>
-    </ion-item>
-    <ion-item routerLink="/tabs/tab1/pescados" detail>
-      <ion-icon slot="start" color="medium" src="../../assets/icon/fish.svg"></ion-icon>
-      <ion-label>Pescados</ion-label>
-    </ion-item>
-    <ion-item routerLink="/tabs/tab1/postres" detail>
-      <ion-icon slot="start" color="medium" src="../../assets/icon/cupcake-2.svg"></ion-icon>
-      <ion-label>Postres</ion-label>
-    </ion-item>
-    <ion-item routerLink="/tabs/tab1/tipicos" detail>
-      <ion-icon slot="start" color="medium" src="../../assets/icon/gingerbread.svg"></ion-icon>
-      <ion-label>Típicos</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card mode="ios">
+    <ion-avatar>
+      <img src="../../assets/icon/chef.svg" class="slide-image title" alt="">
+    </ion-avatar>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        <ion-label class="categorias" color="primary">Categorías</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-list lines="none">
+      <ion-item routerLink="/tabs/tab1/arroces" detail>
+        <ion-icon slot="start" color="medium" src="../../assets/icon/rice.svg"></ion-icon>
+        <ion-label>Arroces</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tabs/tab1/legumbres" detail>
+        <ion-icon slot="start" color="medium" src="../../assets/icon/beans.svg"></ion-icon>
+        <ion-label>Legumbres</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tabs/tab1/carnes" detail>
+        <ion-icon slot="start" color="medium" src="../../assets/icon/meat-1.svg"></ion-icon>
+        <ion-label>Carnes</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tabs/tab1/pescados" detail>
+        <ion-icon slot="start" color="medium" src="../../assets/icon/fish.svg"></ion-icon>
+        <ion-label>Pescados</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tabs/tab1/postres" detail>
+        <ion-icon slot="start" color="medium" src="../../assets/icon/cupcake-2.svg"></ion-icon>
+        <ion-label>Postres</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tabs/tab1/tipicos" detail>
+        <ion-icon slot="start" color="medium" src="../../assets/icon/gingerbread.svg"></ion-icon>
+        <ion-label>Típicos</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

@@ -22,7 +22,9 @@ ion-toolbar{
  }
 
  ion-label{
-    font-size: 1.5em;
+  font-weight: 300;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
   }
 
 
@@ -41,10 +43,21 @@ ion-toolbar{
       font-size: 1.3em;
     }
     ion-icon{
-        font-size: 1em;
+        font-size: 1.5em;
     }
     .ingredients{
       font-size: 1em;
       font-weight: 300;
     }
+  }
+
+  .icon {
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: 300;
+    vertical-align: middle;
+   }
+   .text{
+    display: inline-block;
+    vertical-align: middle;
   }
