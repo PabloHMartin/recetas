@@ -14,7 +14,8 @@ import { User } from '../models/user.model';
 
 import { Platform } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
-
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { restoreView } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,8 @@ export class AuthService {
     private afs: AngularFirestore,
     private router: Router,
     private gPlus: GooglePlus,
-    private platform: Platform
+    private platform: Platform,
+    private fb: Facebook
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -48,6 +50,16 @@ export class AuthService {
       this.webGoogleLogin();
     }
   }
+  async facebookSignin() {
+
+    if (this.platform.is('cordova')) {
+      this.facebookNativeLogin();
+    } else {
+      this.facebookLogin();
+    }
+  }
+
+
   async nativeGoogleLogin() {
     try {
       const gplusUser = await this.gPlus.login({
@@ -61,7 +73,6 @@ export class AuthService {
       this.updateUserData(credential.user);
       return this.router.navigate(['/']);
     } catch (err) {
-      alert(err);
     }
   }
 
@@ -78,6 +89,24 @@ export class AuthService {
     this.updateUserData(credential.user);
     return this.router.navigate(['/']);
   }
+
+  async facebookNativeLogin() {
+    this.fb.login(['public_profile', 'email'])
+      .then((res: FacebookLoginResponse) => {
+        this.fb.api('me/?fields=id,email,first_name,picture?type=large', ['public_profile', 'email'])
+          .then(async apiRes => {
+            const credential = await this.afAuth.auth.signInAndRetrieveDataWithCredential(auth.FacebookAuthProvider
+              .credential(res.authResponse.accessToken));
+            this.updateUserData(credential.user);
+            this.router.navigate(['/']);
+          });
+      })
+      .catch(e => console.log('Error logging into Facebook', e));
+
+
+    this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+  }
+
 
   async signOut() {
     await this.afAuth.auth.signOut().then();

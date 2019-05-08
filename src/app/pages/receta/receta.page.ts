@@ -6,6 +6,7 @@ import { RecetasService } from 'src/app/services/recetas.service';
 import { Observable } from 'rxjs';
 import { Receta } from 'src/app/models/receta.model';
 import { FavService } from 'src/app/services/fav.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-receta',
@@ -18,6 +19,7 @@ export class RecetaPage implements OnInit {
 
   constructor(public recetaService: RecetasService,
     private route: ActivatedRoute,
+    public auth: AuthService,
     public favService: FavService) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.receta$ = this.recetaService.getRecetaById(this.id);

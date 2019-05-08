@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.recetas.pabloh" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.recetas.pabloh" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Recetas</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <description>Aplicación de recetas españolas</description>
     <author email="pablohmartindev@gmail.com" href="https://pablohmartin.eu">Pablo H Martin</author>
     <content src="index.html" />
     <access origin="*" />
@@ -84,6 +84,12 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-googleplus" spec="7.0.1">
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="4.2.1">
+        <variable name="APP_ID" value="1620882071348806" />
+        <variable name="APP_NAME" value="recetas" />
+        <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>
     <engine name="android" spec="7.1.4" />
 </widget>

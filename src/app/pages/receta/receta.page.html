@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen *ngIf="receta$ | async as receta">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab *ngIf="auth.user$ | async as user;" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="favService.addFav(receta.id)">
       <ion-icon name="heart-empty"></ion-icon>
     </ion-fab-button>
@@ -27,8 +27,8 @@
       </ion-chip>
     </div>
     <div class="description_container" padding>
-      <div class="description">
-        {{receta.description}}
+      <div class="description" innerHTML="{{receta.description}}">
+
       </div>
     </div>
   </div>
