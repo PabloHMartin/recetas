@@ -91,5 +91,6 @@
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>
+    <plugin name="onesignal-cordova-plugin" spec="2.4.7" />
     <engine name="android" spec="7.1.4" />
 </widget>
