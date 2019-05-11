@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 import { Receta } from '../models/receta.model';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -12,13 +13,14 @@ import { variable } from '@angular/compiler/src/output/output_ast';
   providedIn: 'root'
 })
 export class FavService {
-
+  
   private itemDoc: AngularFirestoreDocument<any>;
   recetas: Receta[] = [];
   userId: string;
   favIds$: Observable<any>;
-
+  
   constructor(private afs: AngularFirestore,
+    public toastController: ToastController,
     private afAuth: AngularFireAuth) {
     this.afAuth.auth.onAuthStateChanged(user => {
       if (user) {
@@ -50,10 +52,14 @@ export class FavService {
             this.itemDoc.valueChanges().subscribe(
               data => {
                 //console.log('data.recetaId: ' + data.id);
-                //console.log(this.recetas);
+                console.log(JSON.stringify(data));
+                console.log(!this.recetas.some(item => item.id === data.id));
+                
                 // items.some(item => item.a === '3')
                 if (!this.recetas.some(item => item.id === data.id)) {
                   this.recetas.push(data);
+                  console.log('añade receta');
+                  
                 } else {
                   console.log('already a fav');
                 }
@@ -87,15 +93,42 @@ export class FavService {
   }
 
   addFav(recetaId: string) {
-    this.afs.collection('user_receta').add({
-      recetaId: recetaId,
-      uid: this.userId
-    });
+
+    
+
+        this.afs.collection('user_receta').doc(`${recetaId+this.userId}`).set({
+          id: recetaId+this.userId,
+          recetaId: recetaId,
+          uid: this.userId
+        });
+        this.presentToast();
+    
   }
 
 
   deleteFavs() {
     this.recetas = [];
   }
+
+
+
+  
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Receta añadida a tus habituales!',
+      duration: 2000,
+      translucent: true,
+      showCloseButton: true
+    });
+    toast.present();
+  }
+
+async presentAlreadyFavToast(){
+  const toast = await this.toastController.create({
+    message: 'Esta receta ya la tienes!',
+    duration: 2000
+  });
+  toast.present();
+}
 
 }
