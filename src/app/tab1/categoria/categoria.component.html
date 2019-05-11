@@ -1,14 +1,10 @@
 <ion-header no-border>
   <ion-toolbar>
     <ion-back-button slot="start" defaultHref="/" color="primary"></ion-back-button>
+    <ion-label class="capitalize">{{id}}</ion-label>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-list-header>
-      <ion-label class="capitalize">{{id}}</ion-label>
-    </ion-list-header>
-  </ion-list>
   <div>
     <div *ngIf="recetas$ | async as recetas">
       <div *ngFor="let receta of recetas; let i = index">

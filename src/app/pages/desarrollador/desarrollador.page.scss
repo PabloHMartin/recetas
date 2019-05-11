@@ -18,7 +18,12 @@ ion-card {
     padding-top: 2em;
     overflow: unset !important;
 }
-
+.rrss{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2em;
+}
 
 ion-avatar{
   text-align: center;

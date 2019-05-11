@@ -1,7 +1,12 @@
 .capitalize {
     text-transform: capitalize;
  }
-
+ ion-label{
+  font-weight: 300;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
+  }
+  
  ion-label{
     font-size: 1.5em;
   }

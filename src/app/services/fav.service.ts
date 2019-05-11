@@ -93,9 +93,6 @@ export class FavService {
   }
 
   addFav(recetaId: string) {
-
-    
-
         this.afs.collection('user_receta').doc(`${recetaId+this.userId}`).set({
           id: recetaId+this.userId,
           recetaId: recetaId,
