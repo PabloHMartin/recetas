@@ -12,7 +12,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { restoreView } from '@angular/core/src/render3';
@@ -29,6 +29,7 @@ export class AuthService {
     private router: Router,
     private gPlus: GooglePlus,
     private platform: Platform,
+    private loadingController: LoadingController,
     private fb: Facebook
   ) {
     this.user$ = this.afAuth.authState.pipe(
@@ -62,6 +63,8 @@ export class AuthService {
 
   async nativeGoogleLogin() {
     try {
+      console.log('gplusUser');
+
       const gplusUser = await this.gPlus.login({
         'webClientId': '228635509158-qq6qnaql0l5796uo0euhqs19u008r8p1.apps.googleusercontent.com',
         'offline': true,
@@ -70,24 +73,30 @@ export class AuthService {
       const credential = await this.afAuth.auth.signInAndRetrieveDataWithCredential(
         auth.GoogleAuthProvider.credential(gplusUser.idToken)
       );
+
       this.updateUserData(credential.user);
-      return this.router.navigate(['/']);
+      return this.navigateHome();
     } catch (err) {
+      console.error('err ', err);
     }
   }
+
+  navigateHome() {
+  this.router.navigate(['/']);
+}
 
   async webGoogleLogin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     this.updateUserData(credential.user);
-    this.router.navigate(['/']);
+    this.router.navigate(['/tabs/tab3']);
   }
 
   async facebookLogin() {
     const provider = new auth.FacebookAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     this.updateUserData(credential.user);
-    return this.router.navigate(['/']);
+   this.router.navigate(['/tabs/tab3']);
   }
 
   async facebookNativeLogin() {
@@ -98,7 +107,7 @@ export class AuthService {
             const credential = await this.afAuth.auth.signInAndRetrieveDataWithCredential(auth.FacebookAuthProvider
               .credential(res.authResponse.accessToken));
             this.updateUserData(credential.user);
-            this.router.navigate(['/']);
+            this.router.navigate(['/tabs/tab3']);
           });
       })
       .catch(e => console.log('Error logging into Facebook', e));
@@ -109,11 +118,11 @@ export class AuthService {
 
 
   async signOut() {
-    await this.afAuth.auth.signOut().then();
+    await this.afAuth.auth.signOut();
     this.router.navigate(['/tabs/tab3']);
   }
 
-  private updateUserData({ uid, email, displayName, photoURL, permiteNotificaciones = true }: User) {
+  updateUserData({ uid, email, displayName, photoURL, permiteNotificaciones = true }: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
 
     const data = {
@@ -123,7 +132,9 @@ export class AuthService {
       photoURL,
       permiteNotificaciones
     };
-
+    console.log('data ', data);
+    console.log('userRef ', userRef);
+    
     return userRef.set(data, { merge: true });
   }
 }

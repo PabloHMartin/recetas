@@ -1,7 +1,6 @@
 
 ion-toolbar{
     font-size: 1.5em;
-    margin-bottom: 2em;
   }
 
   ion-icon{
@@ -32,6 +31,18 @@ ion-toolbar{
   font-size: 1.5em;
   font-family: 'Roboto', sans-serif;
   }
+.no_favs{
+  padding: 2rem;
+  
+}
+.no_favs__img{
+  width: 100%;
+}
+.no_favs__text{
+  font-size: 0.8rem;
+  color: grey;
+  font-family: 'Roboto', sans-serif;
+}
 
 
   ion-card{

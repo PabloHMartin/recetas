@@ -5,18 +5,17 @@
 
 
 
-  <ng-template #no_favs>
-
-  </ng-template>
 
 
   <ion-row class="ion-justify-content-center">
-  <div *ngIf="auth.user$ | async as user; else login">
-
-
+  <div *ngIf="favService.recetas.length == 0 && auth.user$ | async as user; else login">
+    <div class="no_favs">
+      <img class="no_favs_img" src="../../assets/icon/stew-1.svg" class="slide-image title" alt="">
+      <p class="no_favs__text">Añade tus favoritas pulsando ❤ en la receta.</p>
+    </div>
   </div>
 </ion-row>
-  <div *ngIf="favService.recetas.length > 0; else no_favs">
+  <div *ngIf="favService.recetas.length > 0;">
     <div *ngIf="favService.recetas as recetas">
       <div *ngFor="let receta of recetas">
         <ion-card mode="ios" routerLink="/receta/{{receta.id}}">

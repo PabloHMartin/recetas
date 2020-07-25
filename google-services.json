@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "228635509158",
+    "firebase_url": "https://recetas-abfa0.firebaseio.com",
+    "project_id": "recetas-abfa0",
+    "storage_bucket": "recetas-abfa0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228635509158:android:6f45780b61f91cf8",
+        "android_client_info": {
+          "package_name": "com.recetas.pabloh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228635509158-c9t0rg5ig50t2tadcpk5nahquc8pedvv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.recetas.pabloh",
+            "certificate_hash": "0b803bf97f5df6c0d61616a1d5afbda00112bab1"
+          }
+        },
+        {
+          "client_id": "228635509158-4senhl5145kmue9uj85oligcdgjpkvle.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.recetas.pabloh",
+            "certificate_hash": "6bc84edf946689815ac237d17cb5ca9e836df015"
+          }
+        },
+        {
+          "client_id": "228635509158-qq6qnaql0l5796uo0euhqs19u008r8p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxS3_ciLo0GMqyEuht9PZgJirx56X7txY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228635509158-qq6qnaql0l5796uo0euhqs19u008r8p1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "228635509158-uinsepso08ie1fh1rsogbgs7smnigf9m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.recetas.pabloh"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
